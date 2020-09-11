@@ -1,83 +1,539 @@
-body {
-  /* Set margin to 0 pixels on all sides */
-margin:0;
-  /* Set font family to be Helvetica or Arial */
-font-family: Arial, Helvetica, sans-serif;
-  /* Set line height to be 1.5 times larger than default */ 
-line-height: 1.5; 
+// Fontfaces
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://rsms.me/inter/inter.css');
+@import url('//db.onlinewebfonts.com/c/2596224269750e00c3ad5356299a3b9f?family=Ogg');
+
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
 }
 
-header {
-  /* Set text alignment to center */
-text-align: center;
-  /* Set margin-bottom to be 50px */
-margin-bottom: 50px;
+// HTML
+   html {
+       line-height: 1.15;
+       -webkit-text-size-adjust: 100%;
+       -ms-text-size-adjust: 100%;
+       -ms-overflow-style: scrollbar;
+       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+       scroll-behavior: smooth;
+   }
+
+// Breakpoints
+$bp-small: 48em; // 768px
+$bp-medium: 64em; // 1024px
+$bp-large: 85.375em; // 1366px
+$bp-xlarge: 120em; // 1920px
+$bp-xxlarge: 160em; // 2560px
+
+// Media Queries
+$mq-small: "(min-width: #{$bp-small})";
+$mq-medium: "(min-width: #{$bp-medium})";
+$mq-large: "(min-width: #{$bp-large})";
+$mq-xlarge: "(min-width: #{$bp-xlarge})";
+$mq-xxlarge: "(min-width: #{$bp-xxlarge})";
+$mq-retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
+
+// Font-Size
+$base-font-size: 12px;
+
+// Line-Height
+$base-line-height: 1.5em;
+$header-line-height: 1.25;
+
+// Body
+   body {
+       font-family: "inter", sans-serif;
+       letter-spacing: 0.05em;
+       font-size: $base-font-size;
+       line-height: $base-line-height;
+@media #{$mq-medium} {
+    font-size: $base-font-size*1;
+    line-height: $base-line-height*1;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+@media #{$mq-large} {
+    font-size: $base-font-size*1.4;
+    margin-left: 3em;
+    margin-right: 3em;
+}
+@media #{$mq-xlarge} {
+    font-size: $base-font-size*1.4;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+@media #{$mq-xxlarge} {
+    font-size: $base-font-size*1.2;
+    margin-left: 3em;
+    margin-right: 3em;
+}
 }
 
-main {
-  /* Set maximum width to be 800 pixels */
-max-width: 800px;
-  /* Set margin to be automatically calculated on all sides */
-margin: auto;
-  /* Set padding to be 0 pixels top & bottom, and 20 pixels left & right */
-  padding-top: 0px;
-  padding-right: 20px;
-  padding-bottom: 0px;
-  padding-left: 20px;
+// Grid system
+
+   .row {
+       display: flex;
+   }
+
+// 1/5ths
+
+
+      .col-md-5ths {
+          position: relative;
+          min-height: 1px;
+          padding-right: 15px;
+          padding-left: 15px;
+          text-align: left;
+      }
+
+// iPhone
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    .col-md-5ths {
+        width: 200%;
+        display: block;
+        padding: 2em 0;
+    }
+    .row {
+        padding: 2.5em 0em;
+    }
 }
 
-p {
-  /* Set font color to be the hex code 333333 */
-color: #333333; 
+// iPad
+@media (min-width: 768px) {
+    .col-md-5ths {
+        width: 100%;
+    }
 }
 
-.faded {
-  /* Set opacity of the text to be 0.7 */
-  opacity: 0.7;
-
+// iPad Pro
+@media (min-width: 992px) {
+    .col-md-5ths {
+        width: 100%;
+    }
 }
 
-img {
-  /* Set max width to be 100% of the containing element */
-max-width: 100%;
-  /* Set maximum width to be 800 pixels */
-width: 800px;
+// Desktop
+@media (min-width: 1200px) {
+    .col-md-5ths {
+        width: 100%;
+    }
 }
 
+// 2/5ths
+
+      .col-md-2-5ths {
+          position: relative;
+          min-height: 1px;
+          padding-right: 15px;
+          padding-left: 15px;
+          text-align: left;
+      }
+
+// iPhone
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    .col-md-2-5ths {
+        width: 50%;
+        display: block;
+        position: absolute;
+        padding: 1em 0 2em;
+        float: left;
+    }
+}
+
+// iPad
+@media (min-width: 768px) {
+    .col-md-2-5ths {
+        width: 200%;
+    }
+}
+
+//iPad Pro
+@media (min-width: 992px) {
+    .col-md-2-5ths {
+        width: 200%;
+    }
+}
+
+// Desktop
+@media (min-width: 1200px) {
+    .col-md-2-5ths {
+        width: 200%;
+        float: left;
+    }
+}
+
+// Back to Top
+   #backToTop {
+       display: none;
+       position: fixed;
+       bottom: 5em;
+       right: 8em;
+       color: orangered;
+       cursor: pointer;
+       border: none;
+       text-align: center;
+       outline: none;
+       background-color: transparent;
+       background-repeat:no-repeat;
+       font-size: 1em;
+       z-index: 150;
+   }
+
+#backToTop:hover {
+    opacity: 0.7;
+
+#backToTop:focus {
+    border: none;
+    outline: none;
+}
+
+#backToTop:active {
+    border: none;
+    outline: none;
+}
+}
+
+// Page sections
+   .fixed-nav {
+       position: fixed;
+       top: 0;
+       left: 0;
+       padding: 2em 2em;
+       z-index: 100;
+       width: 100%;
+       background: -moz-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255, 0));
+       background: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255, 0));
+   }
+
+.footer {
+    padding: 2em 2em;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    background: -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255, 1));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255, 1));
+}
+
+.inactive-nav {
+    color: black;
+}
+
+.active-nav {
+    font-style: italic;
+}
+
+.progress-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: white;
+}
+
+.progress-container {
+    width: 100%;
+    height: 0.15em;
+    color: white;
+}
+
+/* Scroll Indicator */
+.progress-bar {
+    height: 0.15em;
+    background: orangered;
+    width: 0;
+}
+
+/*Image*/
+.zoomImages {
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 20% 20%;
+}
+
+.zoomImages:hover {
+    opacity: 0.7;
+}
+
+/* The Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    padding-top: 7em; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(255,255,255); /* Fallback color */
+    background-color: rgba(255,255,255,0.9); /* White w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: 0 auto auto;
+    display: block;
+    width: 100%;
+    max-width: 50em;
+}
+
+/* Caption of Modal Image (Alt Text) */
+#caption {
+    margin: auto;
+    display: block;
+    width: 60%;
+    max-width: 500px;
+    text-align: center;
+    color: black;
+    padding: 3em 0;
+    height: 150px;
+    font-weight: 300;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    color: orangered;
+    font-size: 2em;
+    font-weight: 100;
+    font-family: "Sporting Grotesque", sans-serif;
+    transition: 0.3s;
+    border: orangered 2px solid;
+    padding: 0.25em 0.25em;
+}
+
+.close:hover,
+.close:focus {
+    opacity: 0.7;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+.bulk-content {
+    margin-top: 13em;
+    margin-bottom: 10em;
+}
+
+.project-nav {
+    position: fixed;
+    top: 0;
+    margin-top: 16em;
+    width: 50%;
+    z-index: 10;
+}
+
+.project-this {
+    position: fixed;
+    top: 0;
+    margin-top: 16em;
+    width: 100%;
+}
+
+.container-projects {
+    display: block;
+    margin-bottom: 4em;
+    margin-top: 4em;
+    justify-self: center;
+}
+
+.project-index {
+    margin: 3em 0;
+}
+
+.project-image > img {
+    border: orangered solid 1px;
+    width: 100%;
+    max-height: 20%;
+    max-width: 90%;
+    padding: 1em;
+}
+
+.text-center {
+    align-self: center;
+}
+
+.active-type {
+    color: orangered;
+    font-style: italic;
+}
+
+.scroll {
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+.scroll > p {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    /* Starting position */
+    -moz-transform:translateY(100%);
+    -webkit-transform:translateY(100%);
+    transform:translateY(100%);
+    /* Apply animation to this element */
+    -moz-animation: scroll 25s linear infinite;
+    -webkit-animation: scroll 25s linear infinite;
+    animation: scroll 25s linear infinite;
+}
+
+@-moz-keyframes scroll {
+    0%   { -moz-transform: translateY(100%); }
+    100% { -moz-transform: translateY(-100%); }
+}
+
+@-webkit-keyframes scroll {
+    0%   { -webkit-transform: translateY(100%); }
+    100% { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes scroll {
+    0% {
+        -moz-transform: translateY(100%); /* Firefox bug fix */
+        -webkit-transform: translateY(100%); /* Firefox bug fix */
+        transform: translateY(100%);
+    }
+    100% {
+        -moz-transform: translateY(-100%); /* Firefox bug fix */
+        -webkit-transform: translateY(-100%); /* Firefox bug fix */
+        transform: translateY(-100%);
+    }
+}
+
+// Everything else
+
+   strong {
+       font-weight: 500;
+   }
+
+/*Selection Color*/
+::selection {
+    color: orangered; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    color: orangered; /* Gecko Browsers */
+}
+
+/*🍊*/
+.channel-orange {
+    color: orangered;
+    display: inline;
+}
+
+/* Header 1 */
 h1 {
-  /* Set border along bottom to be a black solid line 5 pixels thick */
-  border-bottom: 5px solid black;
+    display: inline;
+    font-size: 2.6em;
+    font-family: "Ogg", serif;
+    font-weight: 500;
+    line-height: 1em;
 }
 
+/* Header 2 */
 h2 {
-  /* Set font color to be red (BONUS: try using a hex code like #e51b24!) */
-  color:#e51b24;
-  
+    display: inline;
+    font-size: 1.3em;
+    font-weight: 500;
+    line-height: 1em;
 }
 
-footer {
-  /* Set font color to white */
-  color: white;
-
-  /* Set background color to black */
-background: black;
-  /* Set padding on all sides to be 20 pixels */
-padding: 20px;
-  /* Set text alignment to center */
-text-align: center;
-  /* Set margin on top to be 60 pixels */
-margin-top: 60px;
+/* Code-y Description */
+h3 {
+    display: inline;
+    font-size: 0.8em;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 200;
+    line-height: 1.2em;
 }
 
-@media (max-width: 600px) {
-  body {
-    /* Set the background color to be red */
+sup {
+    font-size: 0.6em;
+    line-height: 0;
+}
 
-    /* Set the font color to be white */
-    
-  }
+a {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-  /* Question - did the font color change? If not, why? Let's fix that below */
+a.dashed {
+    padding-bottom: 0.1em;
+    text-decoration: none;
+    border-bottom: dashed #000000 0.5px;
+}
 
-  /* Where did the H2's go? See if you can fix that too! */
+a.dashed:focus {
+    outline: orangered dashed 1px;
+    outline-offset: 2px;
+}
+
+a.styled-focus:focus {
+    outline: orangered dashed 1px;
+    outline-offset: 2px;
+}
+
+a:hover {
+    opacity: 0.5;
+}
+
+.case-image > img {
+    display: block;
+    width: 100%;
+    max-width: 90%;
+    margin: 0;
+}
+
+.btn__prototype {
+    justify-content: center;
+    padding: 0.5em 1em;
+    border: dashed 0.1em;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn__prototype:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+video {
+    display: flex;
+    max-width: 400px;
+}
+
+@media (max-width: 800px) {
+    body{
+        margin-left: 3em;
+    }
 }
